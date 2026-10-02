@@ -1,0 +1,31 @@
+Gee Haven v7 — CSS 上传修复版
+
+本次修复
+- 15 个 HTML 页面都已内嵌完整 CSS，包含顾客页面和 admin 后台页面。
+- 即使 css/style.css 漏传或路径不对，页面仍能显示原来的样式。
+- ZIP 内 index.html 位于最顶层，不再包在 Gee-Haven-Complete 文件夹内。
+- 增加 .nojekyll，修复没有购物车组件的页面调用 renderCart 时的错误。
+- css/style.css 保留为样式源文件；日后修改样式，须同步更新 HTML 中
+  <style id="gee-haven-styles"> 内的样式。
+
+上传方法
+1. 先解压 ZIP。不要直接把 ZIP 文件上传到 GitHub 当作网页。
+2. 打开你现有的网站仓库，上传解压后的全部文件和文件夹，覆盖同名文件。
+   保持 admin、assets、css、js、supabase 这些文件夹的结构。
+3. 确认仓库首页可以直接看见 index.html、menu.html、admin、assets、js。
+   不要在它们外面再放一层 Gee-Haven-Fixed-v7 或 Gee-Haven-Complete 文件夹。
+4. 如果发布源是仓库根目录：Settings → Pages → Build and deployment，
+   Source 选 Deploy from a branch，选择存放这些文件的分支，文件夹选 /(root)，
+   点击 Save。如果原本配置的是 /docs，则把全部文件放进 docs 文件夹内。
+5. 等待 Pages 部署成功，打开 Settings → Pages 显示的网站地址。
+   如仍看到旧页面，按 Ctrl+F5 强制刷新。
+
+GitHub 官方说明
+https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+https://docs.github.com/en/pages/getting-started-with-github-pages/troubleshooting-404-errors-for-github-pages-sites
+
+已有的数据库配置限制
+原包 js/supabase.js 中的 YOUR_SUPABASE_URL 和 YOUR_SUPABASE_ANON_KEY 仍为占位值。
+本次修复解决 CSS 显示和打包问题；登录、菜单数据和订单等数据库功能需要
+填入你自己的 Supabase 项目 URL 和前端可用的公开密钥，并完成数据库设置。
+尚未验证线上部署或数据库功能。
